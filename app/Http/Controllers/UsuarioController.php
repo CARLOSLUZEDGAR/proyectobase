@@ -87,22 +87,22 @@ class UsuarioController extends Controller
     {
         $buscar = $request->buscar;
         if ($buscar == '') {
-        
             $usuarios = DB::table('users as u')
                     ->join('usuarios as us','u.id_usuario','us.id')
-                    ->join('model_has_roles as mr', 'u.id','mr.model_id')
-                    ->join('roles as r','mr.role_id','r.id')
-                    ->select('us.id as usuario_id','u.id as user_id','u.nick','u.estado','us.nombres','us.ap_paterno','us.ap_materno','r.name as role')
+                    // ->join('model_has_roles as mr', 'u.id','mr.model_id')
+                    // ->join('roles as r','mr.role_id','r.id')
+                    // ->select('us.id as usuario_id','u.id as user_id','u.nick','u.estado','us.nombres','us.ap_paterno','us.ap_materno','r.name as role')
+                    ->select('us.id as usuario_id','u.id as user_id','u.nick','u.estado','us.nombres','us.ap_paterno','us.ap_materno')
                     ->where('us.estado',1)
                     ->orderBy('u.id','desc')
                     ->paginate(10);
         } else {
-            
             $usuarios = DB::table('users as u')
                     ->join('usuarios as us','u.id_usuario','us.id')
-                    ->join('model_has_roles as mr', 'u.id','mr.model_id')
-                    ->join('roles as r','mr.role_id','r.id')
-                    ->select('us.id as usuario_id','u.id as user_id','u.nick','u.estado','us.nombres','us.ap_paterno','us.ap_materno','r.name as role')
+                    // ->join('model_has_roles as mr', 'u.id','mr.model_id')
+                    // ->join('roles as r','mr.role_id','r.id')
+                    // ->select('us.id as usuario_id','u.id as user_id','u.nick','u.estado','us.nombres','us.ap_paterno','us.ap_materno','r.name as role')
+                    ->select('us.id as usuario_id','u.id as user_id','u.nick','u.estado','us.nombres','us.ap_paterno','us.ap_materno')
                     ->where(function($q) use ($buscar){
                             $q->where('us.ap_paterno','LIKE','%'.$buscar.'%')
                             ->orWhere('us.ap_materno','LIKE','%'.$buscar.'%')
@@ -112,7 +112,6 @@ class UsuarioController extends Controller
                     ->orderBy('u.id','desc')
                     ->paginate(10);
         }
-        
         return response()->json([
             'pagination' => [
                 'total'         => $usuarios->total(),

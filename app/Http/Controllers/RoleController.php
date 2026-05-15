@@ -156,13 +156,12 @@ class RoleController extends Controller
         $user = User::find($request->user_id);
         $user->assignRole($request->rol);
         return response()->json($request);
-;    }
+    }
 
     public function QuitarRol(Request $request)
     {
         $user = User::find($request->user_id);
         $user->removeRole($request->rol);
         return response()->json($request);
-        # code...
     }
 }

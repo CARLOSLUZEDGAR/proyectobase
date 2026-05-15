@@ -7,9 +7,9 @@ export default new Router ({
     linkActiveClass: 'active',
     routes: [
 
-        // INICIO RUTAS DGAE
+        // INICIO RUTAS
 
-        { //DGAE
+        {
             path: '/usuarios',
             name: 'Usuarios',
             component:  require('./components/Usuarios/Index.vue').default,
@@ -23,7 +23,7 @@ export default new Router ({
             }
         },
 
-         {//DGAE
+        {
             path: '/DatosPersonal',
             name: 'DatosPersonal',
             component: require('./components/DatosPersonal.vue').default,
@@ -37,7 +37,7 @@ export default new Router ({
             }
         },
         
-        {//DGAE
+        {
             path: '/RegistroPersonal',
             name: 'RegistroPersonal',
             component: require('./components/RegistroPersonal.vue').default,
@@ -51,7 +51,7 @@ export default new Router ({
             }
         },
 
-        {//DGAE
+        {
             path: '/RenovarPersonal/:personalid',
             name: 'RenovarPersonal',
             component: require('./components/RenovarPersonal.vue').default,
@@ -65,134 +65,7 @@ export default new Router ({
             }
         },
 
-        { // DGAE
-            path: '/DocumentacionPersonal',
-            name: 'DocumentacionPersonal',
-            component: require('./components/DocumentacionPersonal.vue').default,
-            beforeEnter: (to, from, next) => {
-                let per = window.user.permissions.map(permission=>permission.name);
-                if (per.includes('view-doc-carnet')) {
-                    next();
-                } else {
-                    next(from.path);
-                }
-            }
-        },
-
-        {//DGAE
-            path: '/MostrarDocumentacionPersonal/:personalid',
-            name: 'MostrarDocumentacionPersonal',
-            component: require('./components/MostrarDocumentacionPersonal.vue').default,
-            // beforeEnter: (to, from, next) => {
-            //     let per = window.user.permissions.map(permission=>permission.name);
-            //     if (per.includes('view-mostrar-doc')) {
-            //         next();
-            //     } else {
-            //         next(from.path);
-            //     }
-            // }
-        },
-
-        { // DGAE
-            path: '/DatosAeronaves',
-            name: 'DatosAeronaves',
-            component: require('./components/DatosAeronaves.vue').default,
-            beforeEnter: (to, from, next) => {
-                let per = window.user.permissions.map(permission=>permission.name);
-                if (per.includes('view-dat-aeronave')) {
-                    next();
-                } else {
-                    next(from.path);
-                }
-            }
-        },
-
-         {//DGAE
-            path: '/RegistroAeronave',
-            name: 'RegistroAeronave',
-            component: require('./components/RegistroAeronave.vue').default,
-            beforeEnter: (to, from, next) => {
-                let per = window.user.permissions.map(permission=>permission.name);
-                if (per.includes('view-insert-per')) {
-                    next();
-                } else {
-                    next(from.path);
-                }
-            }
-        },
-
-         {//DGAE
-            path: '/RenovarAeronave/:aeronaveid',
-            name: 'RenovarAeronave',
-            component: require('./components/RenovarAeronave.vue').default,
-            beforeEnter: (to, from, next) => {
-                let per = window.user.permissions.map(permission=>permission.name);
-                if (per.includes('view-renew-per')) {
-                    next();
-                } else {
-                    next(from.path);
-                }
-            }
-        },
-
-        { // DGAE
-            path: '/DocumentacionAeronave',
-            name: 'DocumentacionAeronave',
-            component: require('./components/DocumentacionAeronave.vue').default,
-            beforeEnter: (to, from, next) => {
-                let per = window.user.permissions.map(permission=>permission.name);
-                if (per.includes('view-doc-aeronave')) {
-                    next();
-                } else {
-                    next(from.path);
-                }
-            }
-        },
-
-        {//DGAE
-            path: '/MostrarDocumentacionAeronave/:aeronaveid',
-            name: 'MostrarDocumentacionAeronave',
-            component: require('./components/MostrarDocumentacionAeronave.vue').default,
-            // beforeEnter: (to, from, next) => {
-            //     let per = window.user.permissions.map(permission=>permission.name);
-            //     if (per.includes('view-mostrar-doc')) {
-            //         next();
-            //     } else {
-            //         next(from.path);
-            //     }
-            // }
-        },
-
-        {//DGAE
-            path: '/ReporteDatosPersonales',
-            name: 'ReporteDatosPersonales',
-            component: require('./components/ReporteDatosPersonales.vue').default,
-            beforeEnter: (to, from, next) => {
-                let per = window.user.permissions.map(permission=>permission.name);
-                if (per.includes('view-datos-personal')) {
-                    next();
-                } else {
-                    next(from.path);
-                }
-            }
-        },
-
-        {//DGAE
-            path: '/ReporteListaLicencias',
-            name: 'ReporteListaLicencias',
-            component: require('./components/ReporteListaLicencias.vue').default,
-            beforeEnter: (to, from, next) => {
-                let per = window.user.permissions.map(permission=>permission.name);
-                if (per.includes('view-lic-otorgadas')) {
-                    next();
-                } else {
-                    next(from.path);
-                }
-            }
-        },
-
-
-        // FIN RUTAS DGAE
+        // FIN RUTAS
 
         {
             path: '/notFound',
@@ -211,41 +84,6 @@ export default new Router ({
             name: 'PasswordChange',
             component: require('./components/PasswordChange.vue').default
         },
-        
-        {
-            path: '/nuevoPersonal',
-            name: 'NuevoPersonal',
-            component:  require('./components/Personal/NewPersonal.vue').default,
-            beforeEnter: (to, from, next) => {
-                let per = window.user.permissions.map(permission=>permission.name);
-                if (per.includes('insert-per')) {
-                    next();
-                } else {
-                    next(from.path);
-                }
-            }
-        },
-
-        {
-            path: '/nuevoPersonalEgresado',
-            name: 'NuevoPersonalEgresado',
-            component:  require('./components/Personal/NewPersonalEgresado.vue').default,
-            beforeEnter: (to, from, next) => {
-                let per = window.user.permissions.map(permission=>permission.name);
-                if (per.includes('insert-per-egre')) {
-                    next();
-                } else {
-                    next(from.path);
-                }
-            }
-        },
-
-        {
-            path: '/editarPersonal/:codigo',
-            name: 'EditarPersonal',
-            component:  require('./components/Personal/EditPersonal.vue').default
-        },
-       
 
         /**
          * Ruta para creacion de usuarios

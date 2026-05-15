@@ -174,8 +174,9 @@
           //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           // },
           success: function(data){
-              var nombre = data.nombres+' '+data.ap_paterno+' '+data.ap_materno;
-              $('#nombre').text(nombre);
+            //   var nombre = data.nombres+' '+data.ap_paterno+' '+data.ap_materno;
+            var nombre = data.nombres+' '+data.ap_paterno;
+            $('#nombre').text(nombre);
           },
           error: function(data){
               console.log(data);
