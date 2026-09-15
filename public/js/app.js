@@ -110316,7 +110316,9 @@ var staticRenderFns = [
           _c("div", { staticClass: "col-sm-12" }, [
             _c("h1", [
               _c("i", { staticClass: "far fa-bookmark" }),
-              _vm._v("\n            LISTADO\n            ")
+              _vm._v(
+                "\n            LISTA DEL PERSONAL REGISTRADO\n            "
+              )
             ])
           ]),
           _vm._v(" "),
